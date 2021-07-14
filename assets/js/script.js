@@ -262,20 +262,19 @@ var saveTasks = function() {
 // Converts tasks from the string format back into an array of objects.
 // Iterates through a tasks array and creates task elements on the page from it.
 var loadTasks = function() {
-    tasks = localStorage.getItem("tasks");
+    savedTasks = localStorage.getItem("tasks");
 
     // check if localStorage is null
-    if(tasks === null){
-        tasks = [];
+    if(!savedTasks){
         return false;
     }
 
     // convert stringify data from localStorage into object
-    tasks = JSON.parse(tasks);
-    
-    for (var i = 0; i < tasks.length; i++){
+    savedTasks = JSON.parse(savedTasks);
+
+    for (var i = 0; i < savedTasks.length; i++){
         // loop createTaskEl function to loadout saved tasks        
-        createTaskEl(tasks[i]);
+        createTaskEl(savedTasks[i]);
     }
 };
 
